@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<style>
+    .active {
+        color: red;
+    }
+</style>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    class APP extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                name: 'Hello,React',
+                moviesList: ['县检察院', '星际穿越', '大话西游', '流浪地球', '疯狂动物城'],
+                status: 0
+            }
+        }
+        itemClick(index) {
+            this.setState({
+                status: index
+            })
+        }
+        render() {
+            const {name, moviesList,status} = this.state;
+            const liEL = moviesList.map((item, index) => {
+                return <li key={index} className={index===status?'active':''}
+                           onClick={()=>this.itemClick(index)}>{item}
+                        </li>
+            })
+            return (
+                <div>
+                    <h1>{name}</h1>
+                    <ul>{liEL}</ul>
+                </div>
+            )
+        }
+    }
+
+    let root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<APP/>)
+</script>
+</html>

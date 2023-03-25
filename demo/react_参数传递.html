@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+  class APP extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: 'Hello,React'
+      }
+    }
+
+    btnClick(event,name,age) {
+      console.log("event:", event);
+      console.log("name,age:", name,age);
+    }
+    render() {
+      let { name } = this.state;
+      return (
+              <div>
+                <h1>{name}</h1>
+                <button onClick={this.btnClick.bind(this)}>按钮1</button>
+                <button onClick={(event)=>this.btnClick(event)}>按钮2</button>
+
+                <button onClick={this.btnClick.bind(this,"kede",13)}>按钮3(不推荐,参数乱序)</button>
+                <button onClick={(event)=>this.btnClick(event,"dnslin",23)}>按钮4(推荐)</button>
+              </div>
+      )
+    }
+  }
+
+  let root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<APP/>)
+</script>
+</html>

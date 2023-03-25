@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    class APP extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                name: 'Hello,React',
+                isShow: true,
+                itemInfo: {
+                    name: 'dnslin',
+                    age: 13
+                }
+            }
+        }
+        onClick() {
+            this.setState({
+                isShow: !this.state.isShow
+            })
+        }
+        render() {
+            const { isShow ,itemInfo } = this.state;
+            let element = isShow ? <h1>我是h1</h1> : <h2>我是h2</h2>;
+            if (isShow) {
+                element = <h1>我是h1</h1>
+            } else {
+                element = <h2>我是h2</h2>
+            }
+            return (
+                <div>
+                    <h1>{name}</h1>
+                    <div>{element}</div>
+                    <button onClick={()=>this.onClick()}>按钮</button>
+                    <div>{itemInfo&&itemInfo.name}</div>
+                </div>
+            )
+        }
+    }
+
+    let root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<APP/>)
+</script>
+
+</html>
