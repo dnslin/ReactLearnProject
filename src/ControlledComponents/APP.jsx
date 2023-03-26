@@ -60,7 +60,6 @@ export class APP extends PureComponent {
         })
     }
     handleALLCheckChange(status,index){
-
         let [...multipleChoice] = this.state.multipleChoice;
         multipleChoice[index].checked = !status;
         this.setState({
