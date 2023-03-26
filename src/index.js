@@ -8,7 +8,7 @@
  * @time: 2023/3/22
  */
 import React from 'react';
-import App from './ControlledComponents/APP';
+import App from './HighOrderComponents/APP';
 import ReactDOM from 'react-dom/client';
 
 
