@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    class APP extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                name: 'Hello,React',
+                studentList: [
+                    {id: 1, name: '张三', age: 18},
+                    {id: 2, name: '李四', age: 19},
+                    {id: 3, name: '王五', age: 20},
+                    {id: 4, name: '赵六', age: 21},
+                    {id: 5, name: '田七', age: 22},
+                ]
+            }
+        }
+
+        render() {
+            const {studentList} = this.state;
+            return (
+                <div>
+                    {studentList.filter(e => e.age > 20).slice(0, 2).map((e) => {
+                        return <div key={e.id}>
+                            <h2>{e.id}</h2>
+                            <h3>{e.name}</h3>
+                            <h1>{e.age}</h1>
+                        </div>
+                    })}
+                </div>
+            )
+        }
+    }
+
+    let root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<APP/>)
+</script>
+
+</html>
